@@ -6,10 +6,10 @@
  * @Description: In User Settings Edit
  * @FilePath: \demo-visual-editor\src\packages\visual-editor.tsx
  */
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import './visual-editor.scss';
 import { useModel } from "@/packages/utils/useModel";
-import { VisualEditorBlock } from "./visual-editor-block";
+import { VisualEditorBlock } from "@/packages/visual-editor-block";
 export const VisualEditor = defineComponent({
     props: {
         modelValue: { type: Object },
@@ -19,6 +19,10 @@ export const VisualEditor = defineComponent({
     },
     setup(props, ctx) {
         const dataModel = useModel(() => props.modelValue, val => ctx.emit('update:modelValue', val));
+        const containerStyles = computed(() => ({
+            width: `${dataModel.value.container.width}px`,
+            height: `${dataModel.value.container.height}px`,
+        }));
         return () => (<div class="visual-editor">
         可视化组件
         <div class="visual-editor-menu">
@@ -33,9 +37,9 @@ export const VisualEditor = defineComponent({
         <div class="visual-editor-body">
         <div class="visual-editor-content">
         
-        {!!dataModel.value && !!dataModel.value.blocks && (dataModel.value.blocks.map((block, index) => {
-            <VisualEditorBlock block={block} key={index}/>;
-        }))}
+        <div class="visual-editor-container" style={containerStyles.value}>
+        {!!dataModel.value.blocks && (dataModel.value.blocks.map((block, index) => (<VisualEditorBlock block={block} key={index}/>)))}
+            </div>
         </div>
         </div>
       </div>);

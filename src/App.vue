@@ -9,7 +9,7 @@
 <template>
   <div class="app">
     <h1>这个是页面内容</h1>
-    <visual-editor v-model="jsonData"/>
+    <visual-editor v-model="jsonData" :config="visualConfig"/>
     <!-- <TestUseodel v-model="val"/>
     val:{{val}} -->
   </div>
@@ -19,6 +19,7 @@
 import { defineComponent } from "vue";
 import {VisualEditor} from "@/packages/visual-editor"
 // import {TestUseodel} from "@/packages/utils/useModel"
+import {visualConfig} from '@/visual.config'
 
 export default defineComponent({
   name: "App",
@@ -28,11 +29,12 @@ export default defineComponent({
   },
   data(){
     return{
+      visualConfig,
       val:'',
       jsonData:{
         container:{
-          height:800,
-          width:500,
+          height:500,
+          width:800,
         },
         blocks:[
           {
