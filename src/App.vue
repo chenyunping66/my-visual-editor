@@ -33,17 +33,24 @@ export default defineComponent({
       val:'',
       jsonData:{
         container:{
-          height:500,
+          height:600,
           width:800,
         },
         blocks:[
           {
             top:100,
             left:100,
+          },
+           {
+            top:100,
+            left:100,
           }
         ]
       }
     }
+  },
+  setup(){
+    
   }
 });
 </script>

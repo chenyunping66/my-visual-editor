@@ -1,20 +1,19 @@
-import component from "*.vue";
 import { createVisualEditorConfig } from "./packages/visual-editor.utils";
-import { ELButton } from 'element-plus';
+import { ElButton, ElInput } from 'element-plus';
 export const visualConfig = createVisualEditorConfig();
-visualConfig.registry(key, 'text', component, {
+visualConfig.registry('text', {
     label: '文本',
     preview: () => '预览文本',
     render: () => '渲染文本'
 });
-visualConfig.registry(key, 'button', component, {
+visualConfig.registry('button', {
     label: '按钮',
-    preview: () => <ELButton>按钮</ELButton>,
-    render: () => <ELButton>渲染按钮</ELButton>
+    preview: () => <ElButton>按钮</ElButton>,
+    render: () => <ElButton>渲染按钮</ElButton>
 });
-visualConfig.registry(key, 'input', component, {
+visualConfig.registry('input', {
     label: '输入框',
-    preview: () => <ELInput></ELInput>,
-    render: () => <ELInput></ELInput>
+    preview: () => <ElInput />,
+    render: () => <ElInput />
 });
 //# sourceMappingURL=visual.config.jsx.map

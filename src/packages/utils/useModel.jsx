@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \visual-editor\src\packages\utils\useModel.tsx
  */
-import { ref, watch } from 'vue';
+import { ref, watch, defineComponent } from 'vue';
 export function useModel(getter, emitter) {
     const state = ref(getter());
     watch(getter, val => {
@@ -21,25 +21,25 @@ export function useModel(getter, emitter) {
                 state.value = val;
                 emitter(val);
             }
-        },
+        }
     };
 }
-// export const TestUseodel = defineComponent({
-//   props:{
-//     modelValue:{type:String}
-//   },
-//   emit:{
-//     'update:modelValue':(val?: string)=>true
-//   },
-//   setup(props,ctx){
-//     // const model =  useModel(getter()=>props.modelValue,emitter:val=>ctx.emit('update:modelValue',val))
-//     const model =  useModel(() => props.modelValue, val => ctx.emit('update:modelValue', val))
-//     return ()=>{
-//       <div>
-//         自定义输入框
-//         <input type="text" v-model={model.value}></input>
-//       </div>
-//     }
-//   },
-// })
+export const TestUseModel = defineComponent({
+    props: {
+        modelValue: { type: String }
+    },
+    emit: {
+        'update:modelValue': (val) => true
+    },
+    setup(props, ctx) {
+        // const model =  useModel(getter()=>props.modelValue,emitter:val=>ctx.emit('update:modelValue',val))
+        const model = useModel(() => props.modelValue, val => ctx.emit('update:modelValue', val));
+        return () => {
+            <div>
+        自定义输入框
+        <input type="text" v-model={model.value}></input>
+      </div>;
+        };
+    },
+});
 //# sourceMappingURL=useModel.jsx.map
