@@ -1,62 +1,62 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-24 18:31:28
- * @LastEditTime: 2021-01-24 19:54:46
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-01-31 19:42:59
+ * @LastEditors: your name
  * @Description: In User Settings Edit
  * @FilePath: \visual-editor\src\App.vue
 -->
 <template>
   <div class="app">
-    <h1>这个是页面内容</h1>
-    <visual-editor v-model="jsonData" :config="visualConfig"/>
-    <!-- <TestUseodel v-model="val"/>
-    val:{{val}} -->
+    <h1>这是页面内容</h1>
+    <VisualEditor v-model="jsonData" :config="visualConfig" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import {VisualEditor} from "@/packages/visual-editor"
-// import {TestUseodel} from "@/packages/utils/useModel"
-import {visualConfig} from '@/visual.config'
+import { VisualEditor } from "./packages/visual-editor";
+import { visualConfig } from "./visual.config";
 
 export default defineComponent({
-  name: "App",
+  name: "App",  
   components: {
-    VisualEditor,
-    // TestUseodel
+    VisualEditor
   },
-  data(){
-    return{
+  data() {
+    return {
       visualConfig,
-      val:'',
-      jsonData:{
-        container:{
-          height:600,
-          width:800,
+      jsonData: {
+        container: {
+          height: 500,
+          width: 800
         },
-        blocks:[
+        blocks: [
           {
-            top:100,
-            left:100,
+            top: 200,
+            left: 100,
+            componentKey:'text',
           },
-           {
-            top:100,
-            left:100,
+          {
+            top: 100,
+            left: 100,
+            componentKey:'button',
+          },
+          {
+            top: 200,
+            left: 200,
+            componentKey:'input',
           }
         ]
       }
-    }
-  },
-  setup(){
-    
+    };
   }
 });
 </script>
 
 <style lang="scss">
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
 }
