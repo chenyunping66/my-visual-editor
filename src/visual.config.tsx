@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-01-26 22:47:06
- * @LastEditTime: 2021-01-31 19:44:40
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \visual-editor\src\visual.config.tsx
- */
 import { createVisualEditorConfig } from "./packages/visual-editor.utils";
 
 import { ElButton, ElInput } from 'element-plus'
