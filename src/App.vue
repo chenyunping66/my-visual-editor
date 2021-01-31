@@ -1,63 +1,61 @@
-<!--
- * @Author: your name
- * @Date: 2021-01-24 18:31:28
- * @LastEditTime: 2021-01-31 19:42:59
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \visual-editor\src\App.vue
--->
 <template>
-  <div class="app">
-    <h1>这是页面内容</h1>
-    <VisualEditor v-model="jsonData" :config="visualConfig" />
-  </div>
+    <div class="app">
+        <VisualEditor
+            v-model="jsonData"
+            :config="visualConfig"
+            :formData="formData"
+            :customProps="customProps"
+        >
+        </VisualEditor>
+        <!-- <div style="text-align:center">
+            {{ JSON.stringify(formData) }}
+        </div> -->
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { VisualEditor } from "./packages/visual-editor";
-import { visualConfig } from "./visual.config";
-
+import { defineComponent } from 'vue';
+import { VisualEditor } from '@/packages/visual-editor';
+import { visualConfig } from '@/visual.config';
+import data from './data.json';
 export default defineComponent({
-  name: "App",  
-  components: {
-    VisualEditor
-  },
-  data() {
-    return {
-      visualConfig,
-      jsonData: {
-        container: {
-          height: 500,
-          width: 800
-        },
-        blocks: [
-          {
-            top: 200,
-            left: 100,
-            componentKey:'text',
-          },
-          {
-            top: 100,
-            left: 100,
-            componentKey:'button',
-          },
-          {
-            top: 200,
-            left: 200,
-            componentKey:'input',
-          }
-        ]
-      }
-    };
-  }
+    name: 'App',
+    components: {
+        VisualEditor
+    },
+    data() {
+        return {
+            visualConfig,
+            jsonData: data,
+            formData: {
+                username: 'admin'
+            },
+            customProps: {
+                subBtn: {
+                    onClick: () => {
+                        this.$notify({
+                            message: '表单提交'
+                        });
+                    }
+                },
+                mySelect: {
+                    onChange: (val: string) => {
+                        console.log('表单变化', val)
+                    }
+                }
+            }
+        };
+    }
 });
 </script>
 
 <style lang="scss">
 html,
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+}
+.app {
+    padding-bottom: 300px;
 }
 </style>

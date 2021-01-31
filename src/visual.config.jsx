@@ -3,7 +3,7 @@ import { ElButton, ElInput } from 'element-plus';
 export const visualConfig = createVisualEditorConfig();
 visualConfig.registry('text', {
     label: '文本',
-    preview: () => '预览文本',
+    preview: () => '文本',
     render: () => '渲染文本'
 });
 visualConfig.registry('button', {

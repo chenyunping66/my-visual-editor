@@ -1,3 +1,12 @@
+export function createNewBlock({ component, left, top, }) {
+    return {
+        top,
+        left,
+        componentKey: component.key,
+        adjustPosition: true,
+        focus: false
+    };
+}
 export function createVisualEditorConfig() {
     const componentList = [];
     const componentMap = {};
@@ -11,9 +20,4 @@ export function createVisualEditorConfig() {
         }
     };
 }
-// const config = createVisualEditorConfig()
-// config.registry(name:'input',component{
-//   preview:()=>'输入框'，
-//   render:()=>''
-// })
 //# sourceMappingURL=visual-editor.utils.jsx.map
