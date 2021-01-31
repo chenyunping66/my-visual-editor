@@ -6,7 +6,7 @@
   "blocks": [{
     "componentKey": "text",
     "top": 90,
-    "left": 300,
+    "left": 310,
     "adjustPosition": false,
     "focus": false,
     "zIndex": 0,
@@ -14,7 +14,7 @@
     "height": 22,
     "hasResize": false,
     "props": {
-      "text": "可视化编辑器"
+      "text": "可视化编辑器-demo"
     },
     "model": {}
   }, {
